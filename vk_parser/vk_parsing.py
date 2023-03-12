@@ -12,6 +12,10 @@ def authorize_in_app(login: str, password: str):
 
 
 def get_1000_users(api_session: vk.UserAPI, **params):
+    """
+    :type params: parameters of Vk API-method users.search, more information: https://dev.vk.com/method/users.search
+
+    """
     offset = 0
     count = 200
     users = []
@@ -27,15 +31,15 @@ def save_results(users):
     columns = set(i for d in users for i in d)
 
     with open('out.csv', 'w', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=columns)
+        writer = csv.DictWriter(f, fieldnames=columns, restval='', extrasaction='ignore')
         writer.writeheader()
         for row in users:
             writer.writerow(row)
 
 
 if __name__ == '__main__':
-    user_login = '*'
-    user_pass = '*'
+    user_login = '...'  # change to access
+    user_pass = '...'   # change to access
 
     api = authorize_in_app(user_login, user_pass)
 
@@ -44,5 +48,5 @@ if __name__ == '__main__':
         'photo_max_orig'
     ]
 
-    results = get_1000_users(api, q='Sergey', has_photo=1, fields=fields)
+    results = get_1000_users(api, has_photo=1, fields=fields)
     save_results(results)
