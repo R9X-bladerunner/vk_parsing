@@ -5,7 +5,7 @@ import vk
 
 
 def authorize_in_app(login: str, password: str):
-    client_id = '51577778'  # App ID
+    client_id = '51576983'  # App ID
     v = '5.131'  # API version
     api_session = vk.UserAPI(user_login=login, user_password=password, client_id=client_id, v=v)
     return api_session
