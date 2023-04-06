@@ -28,18 +28,23 @@ def get_1000_users(api_session: vk.UserAPI, **params):
 
 
 def save_results(users):
-    columns = set(i for d in users for i in d)
+    columns = set(i for d in users for i in d)  # getting all key names from passed list of dicts "users"
+    columns2 = []
+    for d in users:
+        for i in d:
+            columns2.append(i)
+    columns2 = set(columns2)
 
-    with open('out.csv', 'w', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=columns, restval='', extrasaction='ignore')
+    with open('../vk_parser/out.csv', 'w', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=columns)
         writer.writeheader()
         for row in users:
             writer.writerow(row)
 
 
 if __name__ == '__main__':
-    user_login = '...'  # change to access
-    user_pass = '...'   # change to access
+    user_login = 'enter_login'  # change to access
+    user_pass = 'enter_pass'   # change to access
 
     api = authorize_in_app(user_login, user_pass)
 
