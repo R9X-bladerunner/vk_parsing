@@ -1,0 +1,3 @@
+vk
+sqlalchemy
+psycopg2-binary
