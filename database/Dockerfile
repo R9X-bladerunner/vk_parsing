@@ -1,0 +1,7 @@
+FROM postgres:latest
+
+ENV POSTGRES_PASSWORD=12345678
+
+ENV POSTGRES_USER=postgres
+
+ENV POSTGRES_DB=vk_users

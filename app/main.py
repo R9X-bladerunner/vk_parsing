@@ -70,16 +70,16 @@ class VkSession:
             users.extend(response['items'])
             time.sleep(0.25)
             offset += 200
-        print(users)
         return users
 
 
 
 
 if __name__ == '__main__':
+    print('Application started!')
 
-    vk_user_login = 'user'  # change to access
-    vk_user_pass = 'password'   # change to access
+    vk_user_login = '-----'  # change to access
+    vk_user_pass = '--------'   # change to access
 
     database_config = {
         'db_name':'vk_users',
@@ -93,4 +93,5 @@ if __name__ == '__main__':
 
     db_session = DataBase(**database_config)
     db_session.add_users(vk_api_session.get_1000_users())
+
 
